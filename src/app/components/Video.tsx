@@ -50,7 +50,7 @@ export function Video(){
     sources: [
       {
         type: "video/youtube", //important
-        src: "https://www.youtube.com/watch?v=mhJRzQsLZGg&pp=ygUFdGVzdGU%3D"
+        src: "https://www.youtube.com/watch?v=AxnYhykRY2o"
       }
     ]
   };
@@ -125,12 +125,12 @@ export function Video(){
           {/* DISCORD AND CHALLENGE DIV */}
 
           <div className="flex flex-col gap-4 w-full sm:w-1/3 md:w-auto">
-            <a href="#" className="p-4 text-small text-black bg-green-300 flex items-center rounded font-bold uppercase gap-2 justify-center hover:bg-green-700 transition-colors">
+            <a href="#" className="p-4 text-small bg-green-300 flex items-center rounded font-bold uppercase gap-2 justify-center hover:bg-green-700 transition-colors">
               {/* <DiscordLogo size={24}/> */}
               Comunidade do Discord
             </a>
 
-            <a href="#" className="p-4 text-small text-blue-500 border border-blue-500 flex items-center rounded font-bold uppercase gap-2 justify-center hover:bg-blue-500 hover:text-gray-900 transition-colors">
+            <a href="#" className="p-4 text-small text-green-300 border border-green-300 flex items-center rounded font-bold uppercase gap-2 justify-center hover:bg-white hover:text-gray-900 transition-colors">
               {/* <Lightning size={24}/> */}
               Acesse o Desafio
             </a>
