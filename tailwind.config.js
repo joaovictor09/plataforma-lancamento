@@ -8,11 +8,37 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        blur: 'url(/src/assets/blur-background.png)',
       },
-    },
+      fontFamily: {
+        sans: 'Roboto, sans-serif'
+      },
+      colors: {
+        green: {
+          300: '#FC3300',
+          500: '#FC3300',
+          700: '#FC3300',
+        },
+        blue: {
+          500: '#81D8F7',
+        },
+        orange: {
+          500: '#FBA94C',
+        },
+        red: {
+          500: '#F75A68',
+        },
+        gray: {
+          100: '#E1E1E6',
+          200: '#C4C4CC',
+          300: '#8D8D99',
+          500: '#323238',
+          600: '#29292E',
+          700: '#121214',
+          900: '#09090A'
+        }
+      },
+    }
   },
   plugins: [],
 }
