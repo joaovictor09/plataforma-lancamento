@@ -1,176 +1,130 @@
-"use client"
+'use client'
 
-// import { DefaultUi, Player, Youtube } from "@vime/react";
-// import { CaretRight, DiscordLogo, FileArrowDown, Lightning } from "phosphor-react";
+import whatsappLogo from '../../assets/icons/whatsapp.svg'
 
-import '@vime/core/themes/default.css'
-import { data } from "autoprefixer";
-import Image from "next/image";
-import { useEffect, useRef } from 'react';
-import videojs from "video.js";
-import "videojs-youtube";
-import "video.js/dist/video-js.css";
+import Image from 'next/image'
+import { ChevronRight, FileDown, ImageIcon, Mail } from 'lucide-react'
+import { useGetLessonBySlugQuery } from '@/graphql/types'
+import { YoutubePlayer } from './Youtube'
+// import { DefaultUi, Player, Youtube } from '@vime/react'
+// import '@vime/core/themes/default.css'
 
-// import { useGetLessonBySlugQuery } from "../graphql/types";
+interface VideoProps {
+  lessonSlug: string
+}
 
-// interface VideoProps {
-//   lessonSlug: string;
-// }
+export function Video({ lessonSlug }: VideoProps) {
+  const { data } = useGetLessonBySlugQuery({
+    variables: {
+      slug: lessonSlug,
+    },
+    fetchPolicy: 'no-cache',
+  })
 
-export function Video(){
-  const videoNode = useRef<any>(null);
-  const player = useRef<any>(null);
-  const initialized = useRef(false);
-  // const { data } = useGetLessonBySlugQuery({
-  //   variables: {
-  //     slug: props.lessonSlug
-  //   },
-  //   fetchPolicy: "network-only",
-  // })
-
-  // if (!data || !data.lesson) {
-  //   return (
-  //     <div className="flex-1">
-  //       <p>Carregando...</p>
-  //     </div>
-  //   )
-  // }
-
-  const initialOptions = {
-    controls: true,
-    fluid: true,
-    controlBar: {
-      volumePanel: {
-        inline: false
-      }
-    }
-  };
-  
-  const videoJsOptions = {
-    sources: [
-      {
-        type: "video/youtube", //important
-        src: "https://www.youtube.com/watch?v=AxnYhykRY2o"
-      }
-    ]
-  };
-
-  useEffect(() => {
-    if (videoNode.current && !initialized.current) {
-      initialized.current = true; //prevent duplicate initialization
-      player.current = videojs(videoNode.current, {
-        ...initialOptions,
-        ...videoJsOptions
-      }).ready(function () {
-        console.log("Player Ready");
-      });
-    }
-    //clear up player on dismount
-    return () => {
-      if (player.current) {
-        player.current.dispose();
-      }
-    };
-  });
-  
-  return(
+  return (
     <div className="flex-1">
-
       {/* VIDEO DIV */}
 
-      <div className="bg-black flex justify-center">
-        <div className="h-full w-full max-w-[1100px] max-h-[60vh] aspect-video">
-          {/* <Player>
-            <Youtube videoId="AxnYhykRY2o" />
-            <DefaultUi />
-          </Player> */}
-          <video ref={videoNode} className="video-js" />
-
+      <div className="flex justify-center bg-zinc-900">
+        <div className="aspect-video h-full max-h-[60vh] w-full max-w-[1100px]">
+          {/* <Youtube videoID={data?.lesson?.videoId!} /> */}
+          <YoutubePlayer videoID={data?.lesson?.videoId!} />
         </div>
       </div>
 
       {/* LESSON AND TEACHER INFORMATIONS DIV */}
 
-      <div className="p-8 max-w-[1100px] mx-auto">
+      <div className="mx-auto max-w-[1100px] p-8">
         <div className="flex flex-col items-start gap-16 sm:flex-row">
-
           {/* LESSON INFORMATIONS */}
 
           <div className="flex-1">
-            <h1 className="text-2xl font-bold ">
-              Teste
-            </h1>
-            <p className="mt-4 text-gray-200 leading-relaxed">
-              Teste
+            <h1 className="text-2xl font-bold ">{data?.lesson?.title}</h1>
+            <p className="mt-4 leading-relaxed text-zinc-600">
+              {data?.lesson?.description}
             </p>
 
             {/* TEACHER INFORMATIONS */}
 
-              <div className="flex items-center gap-4 mt-6">
-                <Image
-                  height={100}
-                  width={100}
-                  className="h-16 w-16 rounded-full border-2 border-blue-500"
-                  src="https://media.licdn.com/dms/image/D4D03AQF6JJK1cGItaw/profile-displayphoto-shrink_800_800/0/1681763150545?e=2147483647&v=beta&t=ETieZvP1MkyC3DJuTekF9bnnuU2CxP-hVA77Xiuy-7w" 
-                  alt="" 
-                />
+            <div className="mt-6 flex items-center gap-4">
+              <Image
+                height={64}
+                width={64}
+                className="aspect-square h-16 items-center rounded-full border-2 border-blue-500"
+                src={data?.lesson?.teacher?.avatarURL!}
+                alt=""
+              />
 
-                <div className="leading-relaxed">
-                  <strong className="font-bold text-2xl block">Guilherme Nagel</strong>
-                  <span className="text-gray-200 text-sm block">CEO @bbmarketing</span>
-                </div>
+              <div className="leading-relaxed">
+                <strong className="block text-2xl font-bold">
+                  {data?.lesson?.teacher?.name}
+                </strong>
+                <span className="block text-sm text-zinc-600">
+                  {data?.lesson?.teacher?.bio}
+                </span>
               </div>
+            </div>
           </div>
 
           {/* DISCORD AND CHALLENGE DIV */}
 
-          <div className="flex flex-col gap-4 w-full sm:w-1/3 md:w-auto">
-            <a href="#" className="p-4 text-small bg-green-300 flex items-center rounded font-bold uppercase gap-2 justify-center hover:bg-green-700 transition-colors">
-              {/* <DiscordLogo size={24}/> */}
-              Comunidade do Discord
+          <div className="flex w-full flex-col gap-4 sm:w-1/3 md:w-auto">
+            <a
+              href="#"
+              className="text-small flex items-center justify-center gap-2 rounded bg-blue-900 p-4 font-bold uppercase text-white transition-all hover:bg-blue-950"
+            >
+              <Image src={whatsappLogo} height={24} alt="Whatsapp logo Logo" />
+              Comunidade do Whatsapp
             </a>
 
-            <a href="#" className="p-4 text-small text-green-300 border border-green-300 flex items-center rounded font-bold uppercase gap-2 justify-center hover:bg-white hover:text-gray-900 transition-colors">
-              {/* <Lightning size={24}/> */}
-              Acesse o Desafio
+            <a
+              href="#"
+              className="text-small flex items-center justify-center gap-2 rounded border border-blue-900 p-4 font-bold uppercase text-blue-900 transition-all hover:border-blue-950 hover:text-blue-950"
+            >
+              <Mail size={24} />
+              Lista de Espera
             </a>
           </div>
         </div>
 
         {/* WALLPAPERS AND MATERIALS DIV */}
 
-        <div className="flex flex-col gap-8 mt-20 md:grid md:grid-cols-2">
-          <a href="" className="bg-gray-700 rounded overflow-hidden flex items-stretch gap-6 hover:bg-gray-600 transition-colors">
-            <div className="bg-green-300 p-6 flex items-center">
-              {/* <FileArrowDown size={40} /> */}
+        <div className="mt-20 flex flex-col gap-8 md:grid md:grid-cols-2">
+          <a
+            href=""
+            className="flex items-stretch gap-6 overflow-hidden rounded border border-blue-900 transition-colors hover:bg-zinc-200"
+          >
+            <div className="flex items-center bg-blue-900 p-6">
+              <FileDown size={40} className="text-white" />
             </div>
             <div className="py-6 leading-relaxed">
-              <strong className="text-2xl">
-                Material Complementar
-              </strong>
-              <p className="text-sm text-gray-200 mt-2">
-                Acesse o material complementar para acelerar o seu desenvolvimento
+              <strong className="text-2xl">Material Complementar</strong>
+              <p className="mt-2 text-sm text-zinc-600">
+                Acesse o material complementar para acelerar o seu
+                desenvolvimento
               </p>
             </div>
-            <div className="p-6 flex items-center">
-              {/* <CaretRight size={24} /> */}
+            <div className="flex items-center p-6 text-blue-900">
+              <ChevronRight size={24} />
             </div>
           </a>
-          
-          <a href="" className="bg-gray-700 rounded overflow-hidden flex items-stretch gap-6 hover:bg-gray-600 transition-colors">
-            <div className="bg-green-300 p-6 flex items-center">
-              {/* <Image size={40} /> */}
+
+          <a
+            href=""
+            className="flex items-stretch gap-6 overflow-hidden rounded border border-blue-900 transition-colors hover:bg-zinc-200"
+          >
+            <div className="flex items-center bg-blue-900 p-6">
+              <ImageIcon size={40} className="text-white" />
             </div>
             <div className="py-6 leading-relaxed">
-              <strong className="text-2xl">
-                Wallpapers Exclusivos
-              </strong>
-              <p className="text-sm text-gray-200 mt-2">
-                Baixe wallpapers exclusivos do Ignite Lab e personalize a sua máquina
+              <strong className="text-2xl">Wallpapers Exclusivos</strong>
+              <p className="mt-2 text-sm text-zinc-600">
+                Baixe wallpapers exclusivos do Ignite Lab e personalize a sua
+                máquina
               </p>
             </div>
-            <div className="p-6 flex items-center">
-              {/* <CaretRight size={24} /> */}
+            <div className="flex items-center p-6 text-blue-900">
+              <ChevronRight size={24} />
             </div>
           </a>
         </div>

@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        blur: 'url(/src/assets/blur-background.png)',
+        hero: 'url(/src/assets/code-mockup.png)',
       },
       fontFamily: {
         sans: 'Roboto, sans-serif'
@@ -20,7 +20,8 @@ module.exports = {
           700: '#FC3300',
         },
         blue: {
-          500: '#81D8F7',
+          900: '#332DE6',
+          950: '#221ea5',
         },
         orange: {
           500: '#FBA94C',

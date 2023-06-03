@@ -1,19 +1,23 @@
-import { RocketLogo } from "./RocketLogo";
+import Image from 'next/image'
+import Logo from '../../assets/Logo.svg'
 
 export function Footer() {
-  return(
-    <div className="w-full bg-gray-700 flex items-center px-6 xl:px-0 border-t border-gray-600">
-      <div className="w-full mx-auto max-w-[1180px] flex flex-col sm:flex-row gap-6 justify-between items-center py-6 self-center text-sm md:text-base">
-        <div className="flex flex-col sm:flex-row items-center gap-6">
-          <RocketLogo />
-          <span className="text-gray-300">
-            Rocketseat - Todos os direitos reservados
+  return (
+    <div className="flex w-full items-center border-t border-gray-100 bg-zinc-50 px-6 xl:px-0">
+      <div className="mx-auto flex w-full max-w-[1180px] flex-col items-center justify-between gap-6 self-center py-6 text-sm sm:flex-row md:text-base">
+        <div className="flex flex-col items-center gap-6 sm:flex-row">
+          <Image
+            src={Logo}
+            height={32}
+            alt="Logo da mentoria do Guilherme Nagel"
+          />
+          <span className="text-gray-600">
+            Copyright © 2023 - Elevation Treinamentos LTDA. CNPJ:
+            236083820001/36
           </span>
         </div>
 
-        <span className="text-gray-300">
-          Políticas de privacidade
-        </span>
+        <span className="text-gray-600">Políticas de privacidade</span>
       </div>
     </div>
   )
