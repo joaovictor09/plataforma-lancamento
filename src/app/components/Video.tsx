@@ -6,8 +6,6 @@ import Image from 'next/image'
 import { ChevronRight, FileDown, ImageIcon, Mail } from 'lucide-react'
 import { useGetLessonBySlugQuery } from '@/graphql/types'
 import { YoutubePlayer } from './Youtube'
-// import { DefaultUi, Player, Youtube } from '@vime/react'
-// import '@vime/core/themes/default.css'
 
 interface VideoProps {
   lessonSlug: string
@@ -28,7 +26,9 @@ export function Video({ lessonSlug }: VideoProps) {
       <div className="flex justify-center bg-zinc-900">
         <div className="aspect-video h-full max-h-[60vh] w-full max-w-[1100px]">
           {/* <Youtube videoID={data?.lesson?.videoId!} /> */}
-          <YoutubePlayer videoID={data?.lesson?.videoId!} />
+          {data?.lesson?.videoId && (
+            <YoutubePlayer videoID={data?.lesson?.videoId!} />
+          )}
         </div>
       </div>
 
@@ -92,14 +92,17 @@ export function Video({ lessonSlug }: VideoProps) {
         <div className="mt-20 flex flex-col gap-8 md:grid md:grid-cols-2">
           <a
             href=""
-            className="flex items-stretch gap-6 overflow-hidden rounded border border-blue-900 transition-colors hover:bg-zinc-200"
+            className="group flex items-stretch gap-6 overflow-hidden rounded border border-blue-900 transition-colors hover:bg-blue-900"
           >
             <div className="flex items-center bg-blue-900 p-6">
               <FileDown size={40} className="text-white" />
             </div>
+
             <div className="py-6 leading-relaxed">
-              <strong className="text-2xl">Material Complementar</strong>
-              <p className="mt-2 text-sm text-zinc-600">
+              <strong className="text-2xl group-hover:text-white">
+                Material Complementar
+              </strong>
+              <p className="mt-2 text-sm text-zinc-600 group-hover:text-zinc-100">
                 Acesse o material complementar para acelerar o seu
                 desenvolvimento
               </p>
@@ -111,14 +114,16 @@ export function Video({ lessonSlug }: VideoProps) {
 
           <a
             href=""
-            className="flex items-stretch gap-6 overflow-hidden rounded border border-blue-900 transition-colors hover:bg-zinc-200"
+            className="group flex items-stretch gap-6 overflow-hidden rounded border border-blue-900 transition-colors hover:bg-blue-900"
           >
             <div className="flex items-center bg-blue-900 p-6">
               <ImageIcon size={40} className="text-white" />
             </div>
             <div className="py-6 leading-relaxed">
-              <strong className="text-2xl">Wallpapers Exclusivos</strong>
-              <p className="mt-2 text-sm text-zinc-600">
+              <strong className="text-2xl group-hover:text-white">
+                Wallpapers Exclusivos
+              </strong>
+              <p className="mt-2 text-sm text-zinc-600 group-hover:text-zinc-100">
                 Baixe wallpapers exclusivos do Ignite Lab e personalize a sua
                 máquina
               </p>

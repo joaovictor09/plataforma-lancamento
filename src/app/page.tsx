@@ -1,36 +1,35 @@
 'use client'
 
-// import { FormEvent, useState } from "react";
 import { FormEvent, useState } from 'react'
-import Logo from '../assets/Logo.svg'
-import { useCreateSubscriberMutation } from '../graphql/types'
-
-import codeMockup from '../assets/code-mockup.png'
-import { Footer } from './components/Footer'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { Loader } from 'lucide-react'
 
-export default function Home() {
-  // const navigate = useNavigate()
+import { useCreateSubscriberMutation } from '../graphql/types'
+import { Footer } from './components/Footer'
 
+import Logo from '../assets/Logo.svg'
+import codeMockup from '../assets/code-mockup.png'
+
+export default function Home() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
-
-  const [createSubscriber, { loading }] = useCreateSubscriberMutation()
+  const [loading, setLoading] = useState(false)
   const router = useRouter()
 
+  const [createSubscriber] = useCreateSubscriberMutation()
   async function handleSubscribe(event: FormEvent) {
     event.preventDefault()
+    setLoading(true)
 
     await createSubscriber({
       variables: {
         name,
         email,
       },
+    }).then(async () => {
+      router.push('/event')
     })
-
-    router.push('/event')
   }
 
   return (
@@ -86,7 +85,7 @@ export default function Home() {
 
               <button
                 type="submit"
-                className="mt-4 rounded bg-blue-900 py-4 text-sm font-bold uppercase text-white transition-colors hover:bg-blue-950 disabled:cursor-not-allowed disabled:opacity-50"
+                className="mt-4 flex items-center justify-center gap-4 rounded bg-blue-900 py-4 text-sm font-bold uppercase text-white transition-colors hover:bg-blue-950 disabled:cursor-not-allowed disabled:opacity-50"
                 disabled={loading}
               >
                 {loading && <Loader className="animate-spin" />}

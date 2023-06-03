@@ -1,30 +1,25 @@
-// import { useNavigate, useParams, Navigate} from "react-router-dom";
-import { Footer } from '../components/Footer'
-import { Header } from '../components/Header'
-import { Sidebar } from '../components/Sidebar'
-import { Video } from '../components/Video'
-// import { useGetFirstLessonSlugQuery } from "../graphql/types"
+'use client'
 
-interface paramsProps {
-  slug: string
-}
+import { useGetFirstLessonSlugQuery } from '@/graphql/types'
+import { useRouter } from 'next/navigation'
 
-export default async function Event({ params }: { params: { slug: string } }) {
-  // const { slug } = useParams<{ slug:string }>()
-  // if !slug - query buscar a primeira aula - redirecionar para o slug da primeira aula
-  const { slug }: paramsProps = params
+export default function Event() {
+  const router = useRouter()
+  // const  = useGetFirstLessonSlugLazyQuery
+
+  async function RedirectToFirstLesson() {
+    useGetFirstLessonSlugQuery({
+      onCompleted: (data) => {
+        router.push(`event/lesson/${data.lessons[0].slug}`)
+      },
+    })
+  }
+
+  RedirectToFirstLesson()
 
   return (
-    <div>
-      <div className="flex min-h-screen flex-col">
-        <Header />
-        <main className="flex flex-1 flex-col xl:flex-row">
-          <Video lessonSlug={slug} />
-          <Sidebar slug={slug} />
-        </main>
-      </div>
-
-      <Footer />
+    <div className="flex flex-1 items-center justify-center">
+      <h1>Loading..</h1>
     </div>
   )
 }
