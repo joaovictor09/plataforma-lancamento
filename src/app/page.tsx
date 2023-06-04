@@ -59,7 +59,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="flex w-full max-w-[1180px] flex-col items-center px-5 pt-10 lg:items-start">
+        <div className="flex w-full max-w-5xl flex-col items-center px-5 pt-10 lg:items-start">
           <Image
             src={Logo}
             alt="Logo da Imersão vendas na prática"
@@ -157,7 +157,7 @@ export default function Home() {
 
       {/* Lessons */}
 
-      <div className="mb-5 mt-10 w-full max-w-[1180px] px-5">
+      <div className="mb-5 mt-10 w-full max-w-5xl px-5">
         <h2 className="mb-10 max-w-lg text-5xl font-bold">
           Aprendizado direto do campo de batalha
         </h2>
@@ -267,14 +267,14 @@ export default function Home() {
       </div>
 
       {/* Este evento é pra você que quer */}
-      <div className="mt-10 w-full max-w-[1180px] px-5">
+      <div className="mt-10 w-full max-w-5xl px-5">
         <h2 className="mb-10 max-w-lg text-5xl font-bold">
           Este evento é pra você que quer
         </h2>
 
-        <div className="grid w-full grid-cols-1 flex-col gap-10 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid w-full grid-cols-1 flex-col gap-10 sm:grid-cols-2">
           <div className="flex flex-col items-center gap-2 overflow-hidden rounded border-2 border-blue-900 text-center transition-all hover:scale-105 hover:bg-blue-900 hover:text-white md:flex-row">
-            <div className="flex h-full w-full items-center justify-center bg-blue-900 px-5 py-2 text-white md:w-max">
+            <div className="flex h-fit w-full items-center justify-center bg-blue-900 px-5 py-2 text-white md:h-full md:w-fit">
               <Banknote size={48} strokeWidth="1.5" />
             </div>
             <span className="px-3 py-5 text-xl font-bold">
@@ -283,7 +283,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col items-center gap-2 overflow-hidden rounded border-2 border-blue-900 text-center transition-all hover:scale-105 hover:bg-blue-900 hover:text-white md:flex-row">
-            <div className="flex h-full w-full items-center justify-center bg-blue-900 px-5 py-2 text-white md:w-max">
+            <div className="flex h-fit w-full items-center justify-center bg-blue-900 px-5 py-2 text-white md:h-full md:w-fit">
               <TrendingUp size={48} strokeWidth="1.5" />
             </div>
             <span className="px-3 py-5  text-xl font-bold">
@@ -292,7 +292,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col items-center gap-2 overflow-hidden rounded border-2 border-blue-900 text-center transition-all hover:scale-105 hover:bg-blue-900 hover:text-white md:flex-row">
-            <div className="flex h-full w-full items-center justify-center bg-blue-900 px-5 py-2 text-white md:w-max">
+            <div className="flex h-fit w-full items-center justify-center bg-blue-900 px-5 py-2 text-white md:h-full md:w-fit">
               <Building2 size={48} strokeWidth="1.5" />
             </div>
             <span className="px-3 py-5 text-xl font-bold">
@@ -301,7 +301,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col items-center gap-2 overflow-hidden rounded border-2 border-blue-900 text-center transition-all hover:scale-105 hover:bg-blue-900 hover:text-white md:flex-row">
-            <div className="flex h-full w-full items-center justify-center bg-blue-900 px-5 py-2 text-white md:w-max">
+            <div className="flex h-fit w-full items-center justify-center bg-blue-900 px-5 py-2 text-white md:h-full md:w-fit">
               <Smartphone size={48} strokeWidth="1.5" />
             </div>
             <span className="px-3 py-5 text-xl font-bold">
@@ -310,7 +310,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col items-center gap-2 overflow-hidden rounded border-2 border-blue-900 text-center transition-all hover:scale-105 hover:bg-blue-900 hover:text-white md:flex-row">
-            <div className="flex h-full w-full items-center justify-center bg-blue-900 px-5 py-2 text-white md:w-max">
+            <div className="flex h-fit w-full items-center justify-center bg-blue-900 px-5 py-2 text-white md:h-full md:w-fit">
               <Trophy size={48} strokeWidth="1.5" />
             </div>
             <span className="px-3 py-5 text-xl font-bold">
@@ -319,7 +319,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col items-center gap-2 overflow-hidden rounded border-2 border-blue-900 text-center transition-all hover:scale-105 hover:bg-blue-900 hover:text-white md:flex-row">
-            <div className="flex h-full w-full items-center justify-center bg-blue-900 px-5 py-2 text-white md:w-max">
+            <div className="flex h-fit w-full items-center justify-center bg-blue-900 px-5 py-2 text-white md:h-full md:w-fit">
               <RotateCw size={48} strokeWidth="1.5" />
             </div>
             <span className="px-3 py-5 text-xl font-bold">
@@ -328,7 +328,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col items-center gap-2 overflow-hidden rounded border-2 border-blue-900 text-center transition-all hover:scale-105 hover:bg-blue-900 hover:text-white md:flex-row">
-            <div className="flex h-full w-full items-center justify-center bg-blue-900 px-5 py-2 text-white md:w-max">
+            <div className="flex h-fit w-full items-center justify-center bg-blue-900 px-5 py-2 text-white md:h-full md:w-fit">
               <Rocket size={48} strokeWidth="1.5" />
             </div>
             <span className="px-3 py-5 text-xl font-bold">
@@ -337,7 +337,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col items-center gap-2 overflow-hidden rounded border-2 border-blue-900 text-center transition-all hover:scale-105 hover:bg-blue-900 hover:text-white md:flex-row">
-            <div className="flex h-full w-full items-center justify-center bg-blue-900 px-5 py-2 text-white md:w-max">
+            <div className="flex h-fit w-full items-center justify-center bg-blue-900 px-5 py-2 text-white md:h-full md:w-fit">
               <Users2 size={48} strokeWidth="1.5" />
             </div>
             <span className="px-3 py-5 text-xl font-bold">
