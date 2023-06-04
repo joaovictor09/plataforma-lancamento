@@ -6,3 +6,9 @@ body {
   @apply bg-zinc-50 text-black;
   -webkit-font-smoothing: antialiased;
 }
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+}
