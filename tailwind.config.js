@@ -10,6 +10,7 @@ module.exports = {
       backgroundImage: {
         hero: 'url("/bg-palestra.png")',
         backgroung: 'url("/bg-palestra-2.jpeg")',
+        'background-2': 'url("/bg-palestra3.png")',
       },
       fontFamily: {
         sans: 'Roboto, sans-serif',

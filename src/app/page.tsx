@@ -47,7 +47,7 @@ export default function Home() {
       {/* Hero and form */}
 
       <div
-        className=" relative mx-auto flex w-full flex-col items-center  bg-no-repeat pb-5 lg:bg-hero"
+        className=" relative mx-auto flex w-full flex-col items-center bg-cover bg-no-repeat pb-5 lg:bg-hero"
         id="register"
       >
         {/* Hero */}
