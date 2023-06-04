@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import LogoBlack from '../assets/Logo-black.svg'
+import Logo from '../assets/Logo.svg'
 import BackgroundImage from '../assets/bg-palestra.png'
 import { Footer } from './components/Footer'
 import {
@@ -47,7 +47,7 @@ export default function Home() {
       {/* Hero and form */}
 
       <div
-        className=" relative mx-auto flex w-full flex-col items-center bg-no-repeat pb-5 lg:bg-hero"
+        className=" relative mx-auto flex w-full flex-col items-center  bg-no-repeat pb-5 lg:bg-hero"
         id="register"
       >
         {/* Hero */}
@@ -59,9 +59,9 @@ export default function Home() {
           />
         </div>
 
-        <div className="flex w-full max-w-[1180px] flex-col px-5 pt-10">
+        <div className="flex w-full max-w-[1180px] flex-col items-center px-5 pt-10 lg:items-start">
           <Image
-            src={LogoBlack}
+            src={Logo}
             alt="Logo da Imersão vendas na prática"
             className=""
           />
@@ -389,7 +389,7 @@ export default function Home() {
         </div>
       </div>
 
-      <Footer />
+      <Footer variant="dark" />
     </main>
   )
 }
