@@ -1,4 +1,3 @@
-import { Calendar, Clock8 } from 'lucide-react'
 import Image from 'next/image'
 import { Footer } from '../components/Footer'
 import Logo from '../../assets/Logo.svg'
@@ -8,7 +7,7 @@ import Link from 'next/link'
 
 export default function ThankYou() {
   return (
-    <main className="flex min-h-screen w-full flex-1 flex-col items-center justify-center">
+    <main className="flex min-h-screen w-full flex-1 flex-col items-center justify-center text-center">
       {/* Hero and form */}
 
       <div
@@ -51,16 +50,16 @@ export default function ThankYou() {
 
       {/* Não fique de fora da imersão. */}
 
-      <div className="mb-5 mt-10 w-full max-w-5xl px-5">
-        <h2 className="mb-10 max-w-lg text-5xl font-bold">
+      <div className="mb-5 mt-10 flex w-full max-w-5xl flex-col items-center justify-center px-5">
+        <h2 className="mb-10 w-full max-w-lg text-center text-5xl font-bold">
           Não fique de fora da imersão.
         </h2>
 
         <div className="flex w-full flex-col gap-5">
           {/* Whatsapp Group */}
-          <div className="flex w-full flex-col gap-5 rounded bg-blue-900 p-7 text-white">
-            <div className="flex w-full flex-col items-center justify-between lg:flex-row">
-              <span className="hidden rounded p-2 text-4xl font-bold lg:flex">
+          <div className="flex w-full flex-col items-center justify-center gap-5 rounded bg-blue-900 p-7 text-white">
+            <div className="flex w-full flex-col items-center justify-center lg:flex-row">
+              <span className="rounded p-2 text-3xl font-bold sm:text-4xl ">
                 ENTRE NO GRUPO DE WHATSAPP
               </span>
             </div>
@@ -74,7 +73,7 @@ export default function ThankYou() {
             <a
               href="https://devzapp.com.br/#/dev-zap-grupos/61ce10a2e3d339000121f7ac"
               target="_blank"
-              className="mt-5 flex w-max items-center gap-2 rounded bg-white px-10 py-5 text-lg font-bold text-blue-900 transition-all hover:scale-105"
+              className="mt-5 flex w-fit items-center gap-2 rounded bg-white px-10 py-5 font-bold text-blue-900 transition-all hover:scale-105 sm:text-lg"
               rel="noreferrer"
             >
               ENTRE NO GRUPO DO EVENTO
@@ -83,8 +82,8 @@ export default function ThankYou() {
 
           {/* Check email */}
           <div className="flex w-full flex-col gap-5 rounded bg-blue-900 p-7 text-white">
-            <div className="flex w-full flex-col items-center justify-between lg:flex-row">
-              <span className="hidden rounded text-4xl font-bold lg:flex">
+            <div className="flex w-full flex-col items-center justify-center lg:flex-row">
+              <span className="rounded text-3xl font-bold sm:text-4xl ">
                 CONFIRME SEU E-MAIL
               </span>
             </div>
@@ -100,9 +99,9 @@ export default function ThankYou() {
           </div>
 
           {/* Check Platform */}
-          <div className="flex w-full flex-col gap-5 rounded bg-blue-900 p-7 text-white">
-            <div className="flex w-full flex-col items-center justify-between lg:flex-row">
-              <span className="hidden rounded p-2 text-4xl font-bold lg:flex">
+          <div className="flex w-full flex-col items-center justify-center gap-5 rounded bg-blue-900 p-7 text-white">
+            <div className="flex w-full flex-col items-center justify-center lg:flex-row">
+              <span className="rounded p-2 text-3xl font-bold sm:text-4xl">
                 Confira nossa plataforma exclusiva
               </span>
             </div>
@@ -115,7 +114,7 @@ export default function ThankYou() {
 
             <Link
               href="/event"
-              className="mt-5 flex w-max items-center gap-2 rounded bg-white px-10 py-5 text-lg font-bold text-blue-900 transition-all hover:scale-105"
+              className="mt-5 flex w-fit items-center gap-2 rounded bg-white px-10 py-5 font-bold text-blue-900 transition-all hover:scale-105 sm:text-lg"
             >
               ENTRAR NA PLATAFORMA
             </Link>
@@ -151,7 +150,7 @@ export default function ThankYou() {
             <a
               href="https://devzapp.com.br/#/dev-zap-grupos/61ce10a2e3d339000121f7ac"
               target="_blank"
-              className="mt-5 flex w-max items-center gap-2 rounded bg-blue-900 px-10 py-5 text-lg font-bold text-white transition-all hover:scale-105"
+              className="mt-5 flex w-fit items-center gap-2 rounded bg-blue-900 px-10 py-5 font-bold text-white transition-all hover:scale-105 sm:text-lg"
               rel="noreferrer"
             >
               ENTRE NO GRUPO DO WHATSAPP

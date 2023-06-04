@@ -38,7 +38,7 @@ export default function Home() {
         email,
       },
     }).then(async () => {
-      router.push('/event')
+      router.push('/thank-you')
     })
   }
 
@@ -115,7 +115,7 @@ export default function Home() {
       </div>
 
       {/* Marquee */}
-      <div className="relative flex w-full space-x-4 overflow-x-hidden bg-gray-700 text-xl font-bold text-white">
+      <div className="relative flex w-full  overflow-x-hidden bg-gray-700 text-xl font-bold text-white">
         <div className="flex animate-marquee space-x-4 whitespace-nowrap py-12">
           <div className="h-full w-1 bg-blue-900" />
           <span className="">ONLINE E 100% GRATUITO</span>
@@ -135,7 +135,7 @@ export default function Home() {
           <span className="">GRUPO DE WHATSAPP EXCLUSIVO</span>
           <div className="h-full w-1 bg-blue-900" />
         </div>
-        <div className="absolute top-0 flex h-full animate-marquee2 space-x-4 whitespace-nowrap py-12">
+        <div className="absolute top-0 ml-4 flex h-full animate-marquee2 space-x-4 whitespace-nowrap py-12">
           <span className="">ONLINE E 100% GRATUITO</span>
           <div className="h-full w-1 bg-blue-900" />
           <span className="">PDF DO CONTEÚDO DAS AULAS</span>
