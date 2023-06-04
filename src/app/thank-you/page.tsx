@@ -150,7 +150,7 @@ export default function ThankYou() {
             <a
               href="https://devzapp.com.br/#/dev-zap-grupos/61ce10a2e3d339000121f7ac"
               target="_blank"
-              className="mt-5 flex w-fit items-center gap-2 rounded bg-blue-900 px-10 py-5 font-bold text-white transition-all hover:scale-105 sm:text-lg"
+              className="mt-5 flex w-fit items-center gap-2 self-center rounded bg-blue-900 px-10 py-5 font-bold text-white transition-all hover:scale-105 sm:text-lg"
               rel="noreferrer"
             >
               ENTRE NO GRUPO DO WHATSAPP
