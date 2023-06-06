@@ -17,9 +17,28 @@ import {
   Trophy,
   Users2,
 } from 'lucide-react'
-import { useCreateSubscriberMutation } from '@/graphql/types'
 import { useRouter } from 'next/navigation'
 import { useState, FormEvent } from 'react'
+import { client } from '@/lib/apollo'
+import { gql } from '@apollo/client'
+
+async function fetchCreateSubscriberMutation(name: string, email: string) {
+  await client.query({
+    query: gql`
+      mutation CreateSubscriber($name: String!, $email: String!) {
+        upsertSubscriber(
+          where: { email: $email }
+          upsert: { create: { name: $name, email: $email }, update: {} }
+        ) {
+          name
+          email
+        }
+      }
+    `,
+    variables: { name, email },
+    fetchPolicy: 'no-cache',
+  })
+}
 
 export default function Home() {
   const [name, setName] = useState('')
@@ -27,19 +46,14 @@ export default function Home() {
   const [loading, setLoading] = useState(false)
   const router = useRouter()
 
-  const [createSubscriber] = useCreateSubscriberMutation()
   async function handleSubscribe(event: FormEvent) {
     event.preventDefault()
     setLoading(true)
 
-    await createSubscriber({
-      variables: {
-        name,
-        email,
-      },
-    }).then(async () => {
-      router.push('/thank-you')
-    })
+    await fetchCreateSubscriberMutation(name, email)
+
+    router.push('/thank-you')
+    setLoading(false)
   }
 
   return (
@@ -116,12 +130,7 @@ export default function Home() {
 
       {/* Marquee */}
       <div className="relative flex w-full  overflow-x-hidden bg-gray-700 text-xl font-bold text-white">
-        <div className="flex animate-marquee space-x-4 whitespace-nowrap py-12">
-          <div className="h-full w-1 bg-blue-900" />
-          <span className="">ONLINE E 100% GRATUITO</span>
-          <div className="h-full w-1 bg-blue-900" />
-          <span className="">PDF DO CONTEÚDO DAS AULAS</span>
-          <div className="h-full w-1 bg-blue-900" />
+        <div className="flex animate-marquee gap-4 whitespace-nowrap py-12">
           <span className="">DO ZERO AO AVANÇADO</span>
           <div className="h-full w-1 bg-blue-900" />
           <span className="">GRUPO DE WHATSAPP EXCLUSIVO</span>
@@ -133,13 +142,13 @@ export default function Home() {
           <span className="">DO ZERO AO AVANÇADO</span>
           <div className="h-full w-1 bg-blue-900" />
           <span className="">GRUPO DE WHATSAPP EXCLUSIVO</span>
+          <div className="h-full w-1 bg-blue-900" />
+          <span className="">ONLINE E 100% GRATUITO</span>
+          <div className="h-full w-1 bg-blue-900" />
+          <span className="">PDF DO CONTEÚDO DAS AULAS</span>
           <div className="h-full w-1 bg-blue-900" />
         </div>
         <div className="absolute top-0 ml-4 flex h-full animate-marquee2 space-x-4 whitespace-nowrap py-12">
-          <span className="">ONLINE E 100% GRATUITO</span>
-          <div className="h-full w-1 bg-blue-900" />
-          <span className="">PDF DO CONTEÚDO DAS AULAS</span>
-          <div className="h-full w-1 bg-blue-900" />
           <span className="">DO ZERO AO AVANÇADO</span>
           <div className="h-full w-1 bg-blue-900" />
           <span className="">GRUPO DE WHATSAPP EXCLUSIVO</span>
@@ -151,6 +160,10 @@ export default function Home() {
           <span className="">DO ZERO AO AVANÇADO</span>
           <div className="h-full w-1 bg-blue-900" />
           <span className="">GRUPO DE WHATSAPP EXCLUSIVO</span>
+          <div className="h-full w-1 bg-blue-900" />
+          <span className="">ONLINE E 100% GRATUITO</span>
+          <div className="h-full w-1 bg-blue-900" />
+          <span className="">PDF DO CONTEÚDO DAS AULAS</span>
           <div className="h-full w-1 bg-blue-900" />
         </div>
       </div>

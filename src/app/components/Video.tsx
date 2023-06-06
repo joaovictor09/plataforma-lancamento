@@ -1,23 +1,43 @@
-'use client'
-
 import whatsappLogo from '../../assets/icons/whatsapp.svg'
 
 import Image from 'next/image'
 import { ChevronRight, FileDown, ImageIcon, Mail } from 'lucide-react'
-import { useGetLessonBySlugQuery } from '@/graphql/types'
 import { YoutubePlayer } from './Youtube'
+import { use } from 'react'
+import { client } from '@/lib/apollo'
+import { gql } from '@apollo/client'
 
 interface VideoProps {
   lessonSlug: string
 }
 
-export function Video({ lessonSlug }: VideoProps) {
-  const { data } = useGetLessonBySlugQuery({
-    variables: {
-      slug: lessonSlug,
-    },
+async function fetchLessonBySlug(slug: string) {
+  const data = await client.query({
+    query: gql`
+      query GetLessonBySlug($slug: String) {
+        lesson(where: { slug: $slug }) {
+          title
+          videoId
+          description
+          teacher {
+            avatarURL
+            bio
+            name
+          }
+        }
+      }
+    `,
+    variables: { slug },
     fetchPolicy: 'no-cache',
   })
+
+  return data
+}
+
+export function Video({ lessonSlug }: VideoProps) {
+  const { data } = use(fetchLessonBySlug(lessonSlug))
+
+  const videoId = data.lesson.videoId
 
   return (
     <div className="flex-1">
@@ -26,9 +46,7 @@ export function Video({ lessonSlug }: VideoProps) {
       <div className="flex justify-center bg-zinc-900">
         <div className="aspect-video h-full max-h-[60vh] w-full max-w-[1100px]">
           {/* <Youtube videoID={data?.lesson?.videoId!} /> */}
-          {data?.lesson?.videoId && (
-            <YoutubePlayer videoID={data?.lesson?.videoId!} />
-          )}
+          <YoutubePlayer videoID={videoId} />
         </div>
       </div>
 

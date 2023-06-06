@@ -8,21 +8,12 @@ import Link from 'next/link'
 export default function ThankYou() {
   return (
     <main className="flex min-h-screen w-full flex-1 flex-col items-center justify-center text-center">
-      {/* Hero and form */}
+      {/* Hero */}
 
       <div
         className=" relative flex w-full flex-col items-center justify-center bg-background-2 bg-cover bg-no-repeat py-40"
         id="register"
       >
-        {/* Hero */}
-        <div className={`bg -z-10 h-1/3 lg:hidden`}>
-          {/* <Image
-            src={BackgroundImage}
-            className="h-full w-auto"
-            alt="Imagem com fundo de uma palestra sendo ministrada pelo Guilherme Nagel"
-          /> */}
-        </div>
-
         <div className="flex w-full max-w-lg flex-col items-center justify-center px-5 pt-10 text-center">
           <Image
             src={Logo}
