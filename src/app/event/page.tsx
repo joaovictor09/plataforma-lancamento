@@ -1,5 +1,3 @@
-'use client'
-
 import { client } from '@/lib/apollo'
 import { gql } from '@apollo/client'
 import { redirect } from 'next/navigation'
@@ -26,5 +24,9 @@ export default function Event() {
   const slug = firstLessonSlug.lessons[0].slug
   redirect(`event/lesson/${slug}`)
 
-  return <LoadingLesson />
+  return (
+    <div className="flex flex-1 items-center justify-center">
+      <h1>Loading..</h1>
+    </div>
+  )
 }
