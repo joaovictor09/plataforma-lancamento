@@ -4,6 +4,7 @@ import { client } from '@/lib/apollo'
 import { gql } from '@apollo/client'
 import { redirect } from 'next/navigation'
 import { use } from 'react'
+import LoadingLesson from './loading'
 
 async function fetchFirstLessonSlug() {
   const { data } = await client.query({
@@ -24,4 +25,6 @@ export default function Event() {
   const firstLessonSlug = use(fetchFirstLessonSlug())
   const slug = firstLessonSlug.lessons[0].slug
   redirect(`event/lesson/${slug}`)
+
+  return <LoadingLesson />
 }
