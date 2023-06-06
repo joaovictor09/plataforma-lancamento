@@ -1,19 +1,30 @@
-import { DefaultUi, Player, Youtube } from '@vime/react'
-import '@vime/core/themes/default.css'
+'use client'
+
+import YouTube from 'react-youtube'
 
 interface YoutubeProps {
   videoID: string
 }
 
 export function YoutubePlayer({ videoID }: YoutubeProps) {
-  const ID = String(videoID)
-
-  console.log(ID)
+  const opts = {
+    height: '100%',
+    width: '100%',
+    playerVars: {
+      autoplay: 0,
+      enablejsapi: 1,
+      rel: 0,
+      modestbranding: 1,
+      origin: 'http://localhost:3000',
+      color: 'white',
+    },
+  }
 
   return (
-    <Player controls>
-      <Youtube videoId={ID} />
-      <DefaultUi />
-    </Player>
+    <YouTube
+      videoId={videoID}
+      className="aspect-video h-full w-full"
+      opts={opts}
+    />
   )
 }

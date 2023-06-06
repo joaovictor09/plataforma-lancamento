@@ -17,9 +17,28 @@ import {
   Trophy,
   Users2,
 } from 'lucide-react'
-import { useCreateSubscriberMutation } from '@/graphql/types'
 import { useRouter } from 'next/navigation'
 import { useState, FormEvent } from 'react'
+import { client } from '@/lib/apollo'
+import { gql } from '@apollo/client'
+
+async function fetchCreateSubscriberMutation(name: string, email: string) {
+  await client.query({
+    query: gql`
+      mutation CreateSubscriber($name: String!, $email: String!) {
+        upsertSubscriber(
+          where: { email: $email }
+          upsert: { create: { name: $name, email: $email }, update: {} }
+        ) {
+          name
+          email
+        }
+      }
+    `,
+    variables: { name, email },
+    fetchPolicy: 'no-cache',
+  })
+}
 
 export default function Home() {
   const [name, setName] = useState('')
@@ -27,19 +46,14 @@ export default function Home() {
   const [loading, setLoading] = useState(false)
   const router = useRouter()
 
-  const [createSubscriber] = useCreateSubscriberMutation()
   async function handleSubscribe(event: FormEvent) {
     event.preventDefault()
     setLoading(true)
 
-    await createSubscriber({
-      variables: {
-        name,
-        email,
-      },
-    }).then(async () => {
-      router.push('/thank-you')
-    })
+    await fetchCreateSubscriberMutation(name, email)
+
+    router.push('/thank-you')
+    setLoading(false)
   }
 
   return (

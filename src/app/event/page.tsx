@@ -1,25 +1,27 @@
 'use client'
 
-import { useGetFirstLessonSlugQuery } from '@/graphql/types'
-import { useRouter } from 'next/navigation'
+import { client } from '@/lib/apollo'
+import { gql } from '@apollo/client'
+import { redirect } from 'next/navigation'
+import { use } from 'react'
+
+async function fetchFirstLessonSlug() {
+  const { data } = await client.query({
+    query: gql`
+      query GetFirstLessonSlug {
+        lessons(orderBy: availableAt_ASC, first: 1) {
+          slug
+        }
+      }
+    `,
+    fetchPolicy: 'no-cache',
+  })
+
+  return data
+}
 
 export default function Event() {
-  const router = useRouter()
-  // const  = useGetFirstLessonSlugLazyQuery
-
-  async function RedirectToFirstLesson() {
-    useGetFirstLessonSlugQuery({
-      onCompleted: (data) => {
-        router.push(`event/lesson/${data.lessons[0].slug}`)
-      },
-    })
-  }
-
-  RedirectToFirstLesson()
-
-  return (
-    <div className="flex flex-1 items-center justify-center">
-      <h1>Loading..</h1>
-    </div>
-  )
+  const firstLessonSlug = use(fetchFirstLessonSlug())
+  const slug = firstLessonSlug.lessons[0].slug
+  redirect(`event/lesson/${slug}`)
 }
