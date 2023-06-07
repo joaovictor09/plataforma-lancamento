@@ -88,7 +88,9 @@ export function Video({ lessonSlug }: VideoProps) {
 
           <div className="flex w-full flex-col gap-4 sm:w-1/3 md:w-auto">
             <a
-              href="#"
+              href="https://devzapp.com.br/#/dev-zap-grupos/61ce10a2e3d339000121f7ac"
+              target="_blank"
+              rel="noreferrer"
               className="text-small flex items-center justify-center gap-2 rounded bg-blue-900 p-4 font-bold uppercase text-white transition-all hover:bg-blue-950"
             >
               <Image src={whatsappLogo} height={24} alt="Whatsapp logo Logo" />
@@ -96,8 +98,10 @@ export function Video({ lessonSlug }: VideoProps) {
             </a>
 
             <a
-              href="#"
+              href="https://www.guilhermenagel.com.br/"
+              target="_blank"
               className="text-small flex items-center justify-center gap-2 rounded border border-blue-900 p-4 font-bold uppercase text-blue-900 transition-all hover:border-blue-950 hover:text-blue-950"
+              rel="noreferrer"
             >
               <Mail size={24} />
               Lista de Espera
@@ -125,7 +129,7 @@ export function Video({ lessonSlug }: VideoProps) {
                 desenvolvimento
               </p>
             </div>
-            <div className="flex items-center p-6 text-blue-900">
+            <div className="flex items-center p-6 text-blue-900 group-hover:text-zinc-100">
               <ChevronRight size={24} />
             </div>
           </a>
@@ -146,7 +150,7 @@ export function Video({ lessonSlug }: VideoProps) {
                 máquina
               </p>
             </div>
-            <div className="flex items-center p-6 text-blue-900">
+            <div className="flex items-center p-6 text-blue-900 group-hover:text-zinc-100">
               <ChevronRight size={24} />
             </div>
           </a>
