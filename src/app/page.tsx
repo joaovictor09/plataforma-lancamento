@@ -107,11 +107,14 @@ export default function Home() {
               className="h-14 rounded border border-zinc-600 bg-zinc-200 px-5 outline-none ring-0 placeholder:text-zinc-700 focus:border-blue-900 focus:ring-1 focus:ring-blue-900"
               type="text"
               placeholder="Seu nome completo"
+              required
+              minLength={3}
               onChange={(event) => setName(event.target.value)}
             />
             <input
               className="h-14 rounded border border-zinc-600 bg-zinc-200 px-5 outline-none ring-0 placeholder:text-zinc-700 focus:border-blue-900 focus:ring-1 focus:ring-blue-900"
               type="email"
+              required
               placeholder="Digite seu email"
               onChange={(event) => setEmail(event.target.value)}
             />
