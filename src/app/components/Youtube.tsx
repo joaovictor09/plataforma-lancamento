@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import YouTube from 'react-youtube'
 
 interface YoutubeProps {
@@ -7,6 +8,8 @@ interface YoutubeProps {
 }
 
 export function YoutubePlayer({ videoID }: YoutubeProps) {
+  const [loading, setLoading] = useState(true)
+
   const opts = {
     height: '100%',
     width: '100%',
@@ -23,8 +26,11 @@ export function YoutubePlayer({ videoID }: YoutubeProps) {
   return (
     <YouTube
       videoId={videoID}
-      className="aspect-video h-full w-full"
+      className={`aspect-video h-full w-full ${
+        loading && 'animate-pulse bg-zinc-700'
+      }`}
       opts={opts}
+      onReady={() => setLoading(!loading)}
     />
   )
 }

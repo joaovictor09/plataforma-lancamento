@@ -1,9 +1,10 @@
 # Todo
 
-- [ ] - Zod para a validate form inputs
-- [ ] - Loading pages
+- [X] Validate form inputs
+- [ ] Loading pages
 - [ ] Put a countdown when enter in a lesson unavailable
 
 # Hotfix
 
-- [ ] Buttons without href
+- [X] Buttons without href
+- [ ] Loading background in YTB Video
