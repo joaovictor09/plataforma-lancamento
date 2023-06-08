@@ -18,7 +18,7 @@ export function YoutubePlayer({ videoID }: YoutubeProps) {
       enablejsapi: 1,
       rel: 0,
       modestbranding: 1,
-      origin: 'http://localhost:3000',
+      origin: 'localhost',
       color: 'white',
     },
   }

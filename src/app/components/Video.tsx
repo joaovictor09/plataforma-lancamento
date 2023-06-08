@@ -6,6 +6,7 @@ import { YoutubePlayer } from './Youtube'
 import { use } from 'react'
 import { client } from '@/lib/apollo'
 import { gql } from '@apollo/client'
+import { Chat } from '../event/lesson/[slug]/components/Chat'
 
 interface VideoProps {
   lessonSlug: string
@@ -19,6 +20,7 @@ async function fetchLessonBySlug(slug: string) {
           title
           videoId
           description
+          lessonType
           teacher {
             avatarURL
             bio
@@ -49,10 +51,13 @@ export function Video({ lessonSlug }: VideoProps) {
           <YoutubePlayer videoID={videoId} />
         </div>
       </div>
+      <div className="mx-auto max-w-[1100px] p-8">
+        {data.lesson.lessonType === 'live' && <Chat liveId={videoId} />}
+      </div>
 
       {/* LESSON AND TEACHER INFORMATIONS DIV */}
 
-      <div className="mx-auto max-w-[1100px] p-8">
+      <div className="mx-auto max-w-[1100px] px-8">
         <div className="flex flex-col items-start gap-16 sm:flex-row">
           {/* LESSON INFORMATIONS */}
 
@@ -111,17 +116,17 @@ export function Video({ lessonSlug }: VideoProps) {
 
         {/* WALLPAPERS AND MATERIALS DIV */}
 
-        <div className="mt-20 flex flex-col gap-8 md:grid md:grid-cols-2">
+        <div className="mb-10 mt-20 flex flex-col gap-8 md:grid md:grid-cols-2">
           <a
             href=""
-            className="group flex items-stretch gap-6 overflow-hidden rounded border border-blue-900 transition-colors hover:bg-blue-900"
+            className="group flex items-stretch gap-2 overflow-hidden rounded border border-blue-900 transition-colors hover:bg-blue-900 sm:gap-6"
           >
-            <div className="flex items-center bg-blue-900 p-6">
+            <div className="flex items-center bg-blue-900 p-2 sm:p-6">
               <FileDown size={40} className="text-white" />
             </div>
 
             <div className="py-6 leading-relaxed">
-              <strong className="text-2xl group-hover:text-white">
+              <strong className="text-xl group-hover:text-white">
                 Material Complementar
               </strong>
               <p className="mt-2 text-sm text-zinc-600 group-hover:text-zinc-100">
@@ -129,16 +134,16 @@ export function Video({ lessonSlug }: VideoProps) {
                 desenvolvimento
               </p>
             </div>
-            <div className="flex items-center p-6 text-blue-900 group-hover:text-zinc-100">
+            <div className="flex items-center p-2 text-blue-900 group-hover:text-zinc-100">
               <ChevronRight size={24} />
             </div>
           </a>
 
           <a
             href=""
-            className="group flex items-stretch gap-6 overflow-hidden rounded border border-blue-900 transition-colors hover:bg-blue-900"
+            className="group flex items-stretch gap-2 overflow-hidden rounded border border-blue-900 transition-colors hover:bg-blue-900 sm:gap-6"
           >
-            <div className="flex items-center bg-blue-900 p-6">
+            <div className="flex items-center bg-blue-900 p-2 sm:p-6">
               <ImageIcon size={40} className="text-white" />
             </div>
             <div className="py-6 leading-relaxed">
@@ -150,7 +155,7 @@ export function Video({ lessonSlug }: VideoProps) {
                 máquina
               </p>
             </div>
-            <div className="flex items-center p-6 text-blue-900 group-hover:text-zinc-100">
+            <div className="flex items-center p-2 text-blue-900 group-hover:text-zinc-100">
               <ChevronRight size={24} />
             </div>
           </a>
