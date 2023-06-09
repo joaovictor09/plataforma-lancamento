@@ -4,10 +4,9 @@ import Iframe from 'react-iframe'
 
 export function Chat({ liveId }: { liveId: string }) {
   const hostname =
-    typeof window !== 'undefined' && window.location.hostname
-      ? window.location.hostname
-      : ''
-  console.log(hostname)
+    process.env.NODE_ENV === 'development'
+      ? 'localhost'
+      : 'https://joaovictor09.dev'
 
   return (
     <Iframe

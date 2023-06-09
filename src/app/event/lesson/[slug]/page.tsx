@@ -2,7 +2,6 @@ import { client } from '@/lib/apollo'
 import { gql } from '@apollo/client'
 import { Sidebar } from '../../../components/Sidebar'
 import { Video } from '../../../components/Video'
-import LoadingLesson from './loading'
 
 interface paramsProps {
   slug: string
