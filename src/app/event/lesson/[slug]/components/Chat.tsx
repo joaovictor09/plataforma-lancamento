@@ -6,7 +6,7 @@ export function Chat({ liveId }: { liveId: string }) {
   const hostname =
     process.env.NODE_ENV === 'development'
       ? 'localhost'
-      : 'https://staging-lancamento-gui.joaovictor09.dev'
+      : 'staging-lancamento-gui.joaovictor09.dev'
 
   return (
     <Iframe
