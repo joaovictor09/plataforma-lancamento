@@ -65,7 +65,7 @@ export function CreateSubscriberForm() {
         className="mt-4 flex items-center justify-center gap-4 rounded bg-blue-900 py-4 text-sm font-bold uppercase text-white transition-colors hover:bg-blue-950 disabled:cursor-not-allowed disabled:opacity-50"
         disabled={loading}
       >
-        {loading && <Loader className="animate-spin" />}
+        {loading && <Loader className="animate-spin" size={20} />}
         <span>Garantir minha vaga</span>
       </button>
     </form>
