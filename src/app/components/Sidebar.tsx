@@ -1,35 +1,28 @@
-import { gql } from '@apollo/client'
 import { Lesson } from './Lesson'
-import { client } from '@/lib/apollo'
 
-interface LessonProps {
+interface teacherProps {
+  avatarURL: string
+  bio: string
+  name: string
+}
+
+interface lessonProps {
   id: string
-  lessonType: 'class' | 'live'
-  availableAt: Date
-  title: string
   slug: string
+  title: string
+  description: string
+  videoId: string
+  lessonType: 'class' | 'live'
+  teacher: teacherProps
+  availableAt: Date
 }
 
-interface DataProps {
-  lessons: LessonProps[]
+interface sidebarProps {
+  lessons: lessonProps[]
+  actualSlug: string
 }
 
-export async function Sidebar({ slug }: { slug: string }) {
-  const { data } = await client.query<DataProps>({
-    query: gql`
-      query GetLessons {
-        lessons(orderBy: availableAt_ASC, stage: PUBLISHED) {
-          id
-          lessonType
-          availableAt
-          title
-          slug
-        }
-      }
-    `,
-    fetchPolicy: 'no-cache',
-  })
-
+export function Sidebar({ actualSlug, lessons }: sidebarProps) {
   return (
     <aside className="border-l border-zinc-200 bg-zinc-50 p-6 xl:w-[348px]">
       <span className="mb-6 block border-b border-zinc-200 pb-6 text-center text-2xl font-bold">
@@ -37,7 +30,7 @@ export async function Sidebar({ slug }: { slug: string }) {
       </span>
 
       <div className="flex flex-col gap-8">
-        {data?.lessons.map((lesson) => {
+        {lessons.map((lesson) => {
           return (
             <Lesson
               key={lesson.id}
@@ -45,7 +38,7 @@ export async function Sidebar({ slug }: { slug: string }) {
               slug={lesson.slug}
               availableAt={new Date(lesson.availableAt)}
               type={lesson.lessonType}
-              actualSlug={slug}
+              actualSlug={actualSlug}
             />
           )
         })}

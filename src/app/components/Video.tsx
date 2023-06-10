@@ -1,50 +1,31 @@
 import whatsappLogo from '../../assets/icons/whatsapp.svg'
 
-import { client } from '@/lib/apollo'
-import { gql } from '@apollo/client'
 import { ChevronRight, FileDown, ImageIcon, Mail } from 'lucide-react'
 import Image from 'next/image'
-import { redirect } from 'next/navigation'
-import { use } from 'react'
 import { Chat } from '../event/components/Chat'
 import { YoutubePlayer } from './Youtube'
 
+interface teacherProps {
+  avatarURL: string
+  bio: string
+  name: string
+}
+
+interface lessonProps {
+  slug: string
+  title: string
+  description: string
+  videoId: string
+  lessonType: 'class' | 'live'
+  teacher: teacherProps
+}
+
 interface VideoProps {
-  lessonSlug: string
+  lesson: lessonProps
 }
 
-async function fetchLessonBySlug(slug: string) {
-  const data = await client.query({
-    query: gql`
-      query GetLessonBySlug($slug: String) {
-        lesson(where: { slug: $slug }) {
-          title
-          videoId
-          description
-          lessonType
-          teacher {
-            avatarURL
-            bio
-            name
-          }
-        }
-      }
-    `,
-    variables: { slug },
-    fetchPolicy: 'no-cache',
-  })
-
-  return data
-}
-
-export function Video({ lessonSlug }: VideoProps) {
-  const { data } = use(fetchLessonBySlug(lessonSlug))
-
-  if (data.lesson === null) {
-    redirect('/event')
-  }
-
-  const videoId = data.lesson.videoId
+export function Video({ lesson }: VideoProps) {
+  const { description, teacher, title, videoId, lessonType } = lesson
 
   return (
     <div className="flex-1">
@@ -57,7 +38,7 @@ export function Video({ lessonSlug }: VideoProps) {
         </div>
       </div>
       <div className="mx-auto max-w-[1100px] p-8">
-        {data.lesson.lessonType === 'live' && <Chat liveId={videoId} />}
+        {lessonType === 'live' && <Chat liveId={videoId} />}
       </div>
 
       {/* LESSON AND TEACHER INFORMATIONS DIV */}
@@ -67,10 +48,8 @@ export function Video({ lessonSlug }: VideoProps) {
           {/* LESSON INFORMATIONS */}
 
           <div className="flex-1">
-            <h1 className="text-2xl font-bold ">{data?.lesson?.title}</h1>
-            <p className="mt-4 leading-relaxed text-zinc-600">
-              {data?.lesson?.description}
-            </p>
+            <h1 className="text-2xl font-bold ">{title}</h1>
+            <p className="mt-4 leading-relaxed text-zinc-600">{description}</p>
 
             {/* TEACHER INFORMATIONS */}
 
@@ -79,16 +58,16 @@ export function Video({ lessonSlug }: VideoProps) {
                 height={64}
                 width={64}
                 className="aspect-square h-16 items-center rounded-full border-2 border-blue-500"
-                src={data?.lesson?.teacher?.avatarURL!}
+                src={teacher.avatarURL}
                 alt=""
               />
 
               <div className="leading-relaxed">
                 <strong className="block text-2xl font-bold">
-                  {data?.lesson?.teacher?.name}
+                  {teacher.name}
                 </strong>
                 <span className="block text-sm text-zinc-600">
-                  {data?.lesson?.teacher?.bio}
+                  {teacher.bio}
                 </span>
               </div>
             </div>
