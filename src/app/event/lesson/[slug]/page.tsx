@@ -1,12 +1,9 @@
 import { client } from '@/lib/apollo'
 import { gql } from '@apollo/client'
+import { redirect } from 'next/navigation'
 import { use } from 'react'
 import { Sidebar } from '../../../components/Sidebar'
 import { Video } from '../../../components/Video'
-
-interface paramsProps {
-  slug: string
-}
 
 interface teacherProps {
   avatarURL: string
@@ -62,11 +59,14 @@ export async function generateStaticParams() {
 }
 
 export default function Event({ params }: { params: { slug: string } }) {
-  // if !slug - query buscar a primeira aula - redirecionar para o slug da primeira aula
-  const { slug }: paramsProps = params
+  const { slug } = params
   const lessons: lessonProps[] = use(fetchAllLessonsSlug())
 
   const actualLessonIndex = lessons.findIndex((lesson) => lesson.slug === slug)
+
+  if (!lessons[actualLessonIndex]) {
+    redirect('/event')
+  }
 
   return (
     <div>
