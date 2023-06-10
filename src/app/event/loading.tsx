@@ -1,5 +1,5 @@
-import { VideoSkeleton } from './lesson/[slug]/components/VideoSkeleton'
-import { SidebarSkeleton } from './lesson/[slug]/components/SidebarSkeleton'
+import { SidebarSkeleton } from './components/SidebarSkeleton'
+import { VideoSkeleton } from './components/VideoSkeleton'
 
 export default async function LoadingLesson() {
   return (

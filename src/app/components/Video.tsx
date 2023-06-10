@@ -1,12 +1,13 @@
 import whatsappLogo from '../../assets/icons/whatsapp.svg'
 
-import Image from 'next/image'
-import { ChevronRight, FileDown, ImageIcon, Mail } from 'lucide-react'
-import { YoutubePlayer } from './Youtube'
-import { use } from 'react'
 import { client } from '@/lib/apollo'
 import { gql } from '@apollo/client'
-import { Chat } from '../event/lesson/[slug]/components/Chat'
+import { ChevronRight, FileDown, ImageIcon, Mail } from 'lucide-react'
+import Image from 'next/image'
+import { redirect } from 'next/navigation'
+import { use } from 'react'
+import { Chat } from '../event/components/Chat'
+import { YoutubePlayer } from './Youtube'
 
 interface VideoProps {
   lessonSlug: string
@@ -38,6 +39,10 @@ async function fetchLessonBySlug(slug: string) {
 
 export function Video({ lessonSlug }: VideoProps) {
   const { data } = use(fetchLessonBySlug(lessonSlug))
+
+  if (data.lesson === null) {
+    redirect('/event')
+  }
 
   const videoId = data.lesson.videoId
 
