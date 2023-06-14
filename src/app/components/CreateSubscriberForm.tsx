@@ -4,7 +4,7 @@ import { client } from '@/lib/apollo'
 import { gql } from '@apollo/client'
 import { Loader } from 'lucide-react'
 import { useRouter } from 'next/navigation'
-import { useState, FormEvent } from 'react'
+import { FormEvent, useState } from 'react'
 
 async function fetchCreateSubscriberMutation(name: string, email: string) {
   await client.query({
@@ -35,6 +35,7 @@ export function CreateSubscriberForm() {
     setLoading(true)
 
     await fetchCreateSubscriberMutation(name, email)
+    await fetch(`/api/send?name=${name}&email=${email}`)
 
     router.push('/thank-you')
     setLoading(false)
