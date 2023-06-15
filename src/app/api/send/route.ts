@@ -1,8 +1,28 @@
 import { EmailTemplate } from '@/app/components/EmailTemplate'
+import { client } from '@/lib/apollo'
+import { gql } from '@apollo/client'
 import { NextResponse } from 'next/server'
 import { Resend } from 'resend'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
+
+async function fetchCreateSubscriberMutation(name: string, email: string) {
+  await client.query({
+    query: gql`
+      mutation CreateSubscriber($name: String!, $email: String!) {
+        upsertSubscriber(
+          where: { email: $email }
+          upsert: { create: { name: $name, email: $email }, update: {} }
+        ) {
+          name
+          email
+        }
+      }
+    `,
+    variables: { name, email },
+    fetchPolicy: 'no-cache',
+  })
+}
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
@@ -17,6 +37,8 @@ export async function GET(request: Request) {
       subject: `Quase lá, ${name}`,
       react: EmailTemplate({ firstName: name }),
     })
+
+    await fetchCreateSubscriberMutation(name, email)
 
     return NextResponse.json(data)
   } catch (error) {
