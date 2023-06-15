@@ -24,23 +24,36 @@ async function fetchCreateSubscriberMutation(name: string, email: string) {
   })
 }
 
+async function sendConfirmationEmail({
+  email,
+  name,
+}: {
+  email: string
+  name: string
+}) {
+  const data = await resend.sendEmail({
+    from: 'contato@joaovictor09.dev',
+    to: email,
+    reply_to: 'contato@joaovictor09.dev',
+    subject: `Quase lá, ${name}`,
+    react: EmailTemplate({ firstName: name }),
+  })
+
+  return data
+}
+
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url)
   const email = searchParams.get('email')
   const name = searchParams.get('name')
 
   try {
-    const data = await resend.sendEmail({
-      from: 'contato@joaovictor09.dev',
-      to: email,
-      reply_to: 'contato@joaovictor09.dev',
-      subject: `Quase lá, ${name}`,
-      react: EmailTemplate({ firstName: name }),
-    })
+    const createSubscriberMutation = fetchCreateSubscriberMutation(name, email)
+    const sendEmailFetch = sendConfirmationEmail({ email, name })
 
-    await fetchCreateSubscriberMutation(name, email)
+    await Promise.all([createSubscriberMutation, sendEmailFetch])
 
-    return NextResponse.json(data)
+    return NextResponse.json({ status: 200, message: 'Success' })
   } catch (error) {
     return NextResponse.json({ error })
   }

@@ -16,12 +16,14 @@ export function CreateSubscriberForm() {
 
     const data = await fetch(`/api/send?name=${name}&email=${email}`)
     if (data.ok) {
+      console.log('Success')
       router.push('/thank-you')
     } else {
       window.alert('Erro ao se inscrever')
       setLoading(false)
     }
   }
+
   return (
     <form
       className="mt-5 flex w-full max-w-md flex-col gap-2"
