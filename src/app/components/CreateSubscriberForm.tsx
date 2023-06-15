@@ -1,28 +1,8 @@
 'use client'
 
-import { client } from '@/lib/apollo'
-import { gql } from '@apollo/client'
 import { Loader } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { FormEvent, useState } from 'react'
-
-async function fetchCreateSubscriberMutation(name: string, email: string) {
-  await client.query({
-    query: gql`
-      mutation CreateSubscriber($name: String!, $email: String!) {
-        upsertSubscriber(
-          where: { email: $email }
-          upsert: { create: { name: $name, email: $email }, update: {} }
-        ) {
-          name
-          email
-        }
-      }
-    `,
-    variables: { name, email },
-    fetchPolicy: 'no-cache',
-  })
-}
 
 export function CreateSubscriberForm() {
   const [name, setName] = useState('')
@@ -34,11 +14,13 @@ export function CreateSubscriberForm() {
     event.preventDefault()
     setLoading(true)
 
-    await fetchCreateSubscriberMutation(name, email)
-    await fetch(`/api/send?name=${name}&email=${email}`)
-
-    router.push('/thank-you')
-    setLoading(false)
+    const data = await fetch(`/api/send?name=${name}&email=${email}`)
+    if (data.ok) {
+      router.push('/thank-you')
+    } else {
+      window.alert('Erro ao se inscrever')
+      setLoading(false)
+    }
   }
   return (
     <form
