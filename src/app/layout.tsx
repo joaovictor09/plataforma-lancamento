@@ -26,7 +26,9 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt-br">
-      <body className={`${inter.className} scroll-smooth`}>
+      <body
+        className={`${inter.className} flex w-full flex-col items-center scroll-smooth`}
+      >
         <Providers>{children}</Providers>
       </body>
     </html>
