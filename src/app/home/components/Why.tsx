@@ -68,7 +68,7 @@ export function Why() {
         <div className="mt-12 text-center">
           <a
             href="#"
-            className="inline-block rounded bg-blue-900 px-12 py-3 text-sm font-medium text-white transition hover:bg-blue-950 focus:outline-none focus:ring focus:ring-yellow-400"
+            className="inline-block rounded bg-blue-900 px-12 py-3 text-sm font-bold text-white transition hover:bg-blue-950 focus:outline-none focus:ring focus:ring-blue-950"
           >
             Quero Me Inscrever
           </a>
