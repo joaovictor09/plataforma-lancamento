@@ -1,6 +1,6 @@
 export function Marquee() {
   return (
-    <div className="relative flex w-full  overflow-x-hidden bg-gray-700 text-xl font-bold text-white">
+    <div className="relative flex w-full  overflow-x-hidden bg-gray-900 text-xl font-bold text-white">
       <div className="flex animate-marquee gap-4 whitespace-nowrap py-12">
         <span className="">DO ZERO AO AVANÇADO</span>
         <div className="h-full w-1 bg-blue-900" />

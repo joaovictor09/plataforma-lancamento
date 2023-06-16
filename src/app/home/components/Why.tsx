@@ -1,68 +1,70 @@
 import {
   Banknote,
-  Building2,
   Rocket,
   RotateCw,
   Smartphone,
   TrendingUp,
   Trophy,
-  Users2,
 } from 'lucide-react'
 import { WhyCard } from './WhyCard'
 
 export function Why() {
   return (
-    <section className="flex w-full justify-center bg-gradient-to-b from-gray-900 to-[#161616] text-white">
+    <section className="flex w-full justify-center border-b border-zinc-700 bg-gradient-to-b from-gray-900 to-[#161616] text-white">
       <div className="mt-10 w-full max-w-5xl px-5 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
         <div className="mx-auto max-w-lg text-center">
           <h2 className="text-3xl font-bold sm:text-4xl">
-            Este evento é pra você que quer
+            Este evento é pra{' '}
+            <span className="bg-gradient-to-r from-sky-600 to-blue-900 bg-clip-text text-4xl font-extrabold text-transparent">
+              você
+            </span>{' '}
+            que quer
           </h2>
         </div>
 
         <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          <WhyCard props={{ title: 'Mais Vendas Para Seu Negócio' }}>
+          <WhyCard props={{ title: 'Mais Vendas Para o Seu Negócio' }}>
             <Banknote size={40} strokeWidth="1.5" />
           </WhyCard>
 
           <WhyCard
             props={{
-              title: 'Estratégias De Vendas Aplicadas E Testadas Na Prática',
+              title: 'Estratégias de Vendas Aplicadas e Testadas na Prática',
             }}
           >
             <TrendingUp size={40} strokeWidth="1.5" />
           </WhyCard>
 
-          <WhyCard props={{ title: 'Investir No Futuro Da Sua Empresa' }}>
+          {/* <WhyCard props={{ title: 'Investir No Futuro Da Sua Empresa' }}>
             <Building2 size={40} strokeWidth="1.5" />
-          </WhyCard>
+          </WhyCard> */}
 
           <WhyCard
             props={{
               title:
-                'Atuar E Explorar Os Benefícios Dos Vários Canais De Venda',
+                'Atuar e Explorar os Benefícios dos Vários Canais de Venda',
             }}
           >
             <Smartphone size={40} strokeWidth="1.5" />
           </WhyCard>
 
-          <WhyCard props={{ title: 'Estar À Frente Dos Seus Concorrentes' }}>
+          <WhyCard props={{ title: 'Estar à Frente dos Seus Concorrentes' }}>
             <Trophy size={40} strokeWidth="1.5" />
           </WhyCard>
 
           <WhyCard
-            props={{ title: 'Conquistar a Fidelização Dos Seus Clientes' }}
+            props={{ title: 'Conquistar a Fidelização dos Seus Clientes' }}
           >
             <RotateCw size={40} strokeWidth="1.5" />
           </WhyCard>
 
-          <WhyCard props={{ title: 'Potencializar Os Resultados' }}>
+          <WhyCard props={{ title: 'Potencializar os Resultados' }}>
             <Rocket size={40} strokeWidth="1.5" />
           </WhyCard>
 
-          <WhyCard props={{ title: 'Construir Uma Equipe De Alto Desempenho' }}>
+          {/* <WhyCard props={{ title: 'Construir Uma Equipe De Alto Desempenho' }}>
             <Users2 size={40} strokeWidth="1.5" />
-          </WhyCard>
+          </WhyCard> */}
         </div>
 
         <div className="mt-12 text-center">
