@@ -7,7 +7,7 @@ import { Why } from './components/Why'
 
 export default function HomePage() {
   return (
-    <main className="flex min-h-screen w-full flex-1 flex-col items-center justify-center bg-right-top bg-no-repeat lg:bg-hero">
+    <main className="flex min-h-screen w-full flex-1 flex-col items-center justify-center bg-gray-900">
       <Hero />
       <Marquee />
       <Schedule />

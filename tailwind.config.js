@@ -64,6 +64,10 @@ module.exports = {
           '100%': { top: '0%', scale: 'transform-none' },
         },
       },
+
+      blur: {
+        full: '150px',
+      },
     },
   },
   plugins: [],

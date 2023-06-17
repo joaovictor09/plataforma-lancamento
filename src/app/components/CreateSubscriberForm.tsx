@@ -37,7 +37,7 @@ export function CreateSubscriberForm() {
         onSubmit={handleSubscribe}
       >
         <input
-          className="h-14 rounded border border-zinc-600 bg-zinc-200 px-5 outline-none ring-0 placeholder:text-zinc-700 focus:border-blue-900 focus:ring-1 focus:ring-blue-900"
+          className="h-14 rounded border border-zinc-600 bg-zinc-800 px-5 outline-none ring-0 placeholder:text-zinc-400 focus:border-blue-900 focus:ring-1 focus:ring-blue-900"
           type="text"
           placeholder="Seu nome completo"
           required
@@ -45,7 +45,7 @@ export function CreateSubscriberForm() {
           onChange={(event) => setName(event.target.value)}
         />
         <input
-          className="h-14 rounded border border-zinc-600 bg-zinc-200 px-5 outline-none ring-0 placeholder:text-zinc-700 focus:border-blue-900 focus:ring-1 focus:ring-blue-900"
+          className="h-14 rounded border border-zinc-600 bg-zinc-800 px-5 outline-none ring-0 placeholder:text-zinc-400 focus:border-blue-900 focus:ring-1 focus:ring-blue-900"
           type="email"
           required
           placeholder="Digite seu email"
