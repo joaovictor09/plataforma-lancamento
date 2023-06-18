@@ -12,9 +12,11 @@ module.exports = {
         backgroung: 'url("/bg-palestra-2.jpeg")',
         'background-2': 'url("/bg-palestra3.png")',
       },
+
       fontFamily: {
         sans: 'Roboto, sans-serif',
       },
+
       colors: {
         green: {
           300: '#FC3300',
@@ -41,10 +43,13 @@ module.exports = {
           900: '#09090A',
         },
       },
+
       animation: {
         marquee: 'marquee 20s linear infinite',
         marquee2: 'marquee2 20s linear infinite',
+        alert: 'alert 0.4s ease-in-out',
       },
+
       keyframes: {
         marquee: {
           '0%': { transform: 'translateX(0%)' },
@@ -54,6 +59,18 @@ module.exports = {
           '0%': { transform: 'translateX(100%)' },
           '100%': { transform: 'translateX(0%)' },
         },
+        alert: {
+          '0%': { top: '-100%', scale: '0' },
+          '100%': { top: '0%', scale: 'transform-none' },
+        },
+      },
+
+      blur: {
+        full: '150px',
+      },
+
+      transitionProperty: {
+        'bg-image': 'background-image, image',
       },
     },
   },

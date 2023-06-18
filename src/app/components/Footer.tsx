@@ -10,7 +10,7 @@ export function Footer({ variant }: FooterProps) {
     <div
       className={`flex w-full items-center border-t px-6 xl:px-0 ${
         variant === 'dark'
-          ? 'border-gray-900 bg-gray-700'
+          ? 'border-zinc-600 bg-gray-900'
           : 'border-gray-100 bg-zinc-50'
       }`}
     >

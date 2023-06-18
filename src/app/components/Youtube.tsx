@@ -27,7 +27,7 @@ export function YoutubePlayer({ videoID }: YoutubeProps) {
     <YouTube
       videoId={videoID}
       className={`mx-auto aspect-video h-full w-full max-w-[1100px] px-8 ${
-        loading && 'animate-pulse bg-zinc-700'
+        loading && 'animate-pulse bg-gray-600'
       }`}
       opts={opts}
       onReady={() => setLoading(!loading)}

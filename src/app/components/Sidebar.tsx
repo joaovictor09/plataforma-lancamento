@@ -24,8 +24,8 @@ interface sidebarProps {
 
 export function Sidebar({ actualSlug, lessons }: sidebarProps) {
   return (
-    <aside className="border-l border-zinc-200 bg-zinc-50 p-6 xl:w-[348px]">
-      <span className="mb-6 block border-b border-zinc-200 pb-6 text-center text-2xl font-bold">
+    <aside className="border-l border-zinc-600 p-6 xl:w-[348px]">
+      <span className="mb-6 block border-b border-zinc-600 pb-6 text-center text-2xl font-bold text-zinc-100">
         Cronograma de aulas
       </span>
 

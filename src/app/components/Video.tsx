@@ -48,12 +48,12 @@ export function Video({ lesson }: VideoProps) {
           {/* LESSON INFORMATIONS */}
 
           <div className="flex-1">
-            <h1 className="text-2xl font-bold ">{title}</h1>
-            <p className="mt-4 leading-relaxed text-zinc-600">{description}</p>
+            <h1 className="text-2xl font-bold text-zinc-100">{title}</h1>
+            <p className="mt-4 leading-relaxed text-zinc-200">{description}</p>
 
             {/* TEACHER INFORMATIONS */}
 
-            <div className="mt-6 flex items-center gap-4">
+            <div className="mt-10 flex items-center gap-4">
               <Image
                 height={64}
                 width={64}
@@ -63,10 +63,10 @@ export function Video({ lesson }: VideoProps) {
               />
 
               <div className="leading-relaxed">
-                <strong className="block text-2xl font-bold">
+                <strong className="block text-xl font-bold text-zinc-100">
                   {teacher.name}
                 </strong>
-                <span className="block text-sm text-zinc-600">
+                <span className="block text-sm text-zinc-200">
                   {teacher.bio}
                 </span>
               </div>
@@ -110,10 +110,10 @@ export function Video({ lesson }: VideoProps) {
             </div>
 
             <div className="py-6 leading-relaxed">
-              <strong className="text-xl group-hover:text-white">
+              <strong className="text-xl text-zinc-100">
                 Material Complementar
               </strong>
-              <p className="mt-2 text-sm text-zinc-600 group-hover:text-zinc-100">
+              <p className="mt-2 text-sm text-zinc-100">
                 Acesse o material complementar para acelerar o seu
                 desenvolvimento
               </p>
@@ -131,10 +131,10 @@ export function Video({ lesson }: VideoProps) {
               <ImageIcon size={40} className="text-white" />
             </div>
             <div className="py-6 leading-relaxed">
-              <strong className="text-2xl group-hover:text-white">
+              <strong className="text-2xl text-zinc-100">
                 Wallpapers Exclusivos
               </strong>
-              <p className="mt-2 text-sm text-zinc-600 group-hover:text-zinc-100">
+              <p className="mt-2 text-sm text-zinc-100">
                 Baixe wallpapers exclusivos do Ignite Lab e personalize a sua
                 máquina
               </p>
