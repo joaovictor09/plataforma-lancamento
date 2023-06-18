@@ -68,6 +68,10 @@ module.exports = {
       blur: {
         full: '150px',
       },
+
+      transitionProperty: {
+        'bg-image': 'background-image, image',
+      },
     },
   },
   plugins: [],

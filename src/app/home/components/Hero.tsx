@@ -11,7 +11,7 @@ export function Hero() {
     // Container
     <div className="relative h-full w-full">
       <div
-        className=" mx-auto flex h-full min-h-[calc(100vh_-_10vh)] w-full max-w-5xl flex-row items-center justify-center text-zinc-100 md:justify-normal"
+        className=" mx-auto flex h-full min-h-[calc(100vh_-_10vh)] w-full max-w-5xl flex-row items-center justify-center gap-20 text-zinc-100 md:justify-normal"
         id="register"
       >
         <div className="absolute left-0 top-0 h-40 w-40 rounded-full bg-blue-900 blur-full" />

@@ -1,9 +1,9 @@
 import Image from 'next/image'
-import { Footer } from '../components/Footer'
 import Logo from '../../assets/Logo.svg'
+import { Footer } from '../components/Footer'
 
-import whatsappLogo from '../../assets/icons/whatsapp.svg'
 import Link from 'next/link'
+import whatsappLogo from '../../assets/icons/whatsapp.svg'
 
 export default function ThankYou() {
   return (

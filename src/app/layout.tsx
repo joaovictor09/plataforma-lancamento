@@ -27,7 +27,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt-br">
       <body
-        className={`${inter.className} flex w-full flex-col items-center scroll-smooth`}
+        className={`${inter.className} flex w-full flex-col items-center scroll-smooth bg-gray-900`}
       >
         <Providers>{children}</Providers>
       </body>

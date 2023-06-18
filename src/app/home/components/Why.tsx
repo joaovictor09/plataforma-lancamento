@@ -12,8 +12,8 @@ export function Why() {
   return (
     <section className="flex w-full justify-center border-b border-zinc-700 bg-gradient-to-b from-gray-900 to-[#161616] text-white">
       <div className="mt-10 w-full max-w-5xl px-5 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
-        <div className="mx-auto max-w-lg text-center">
-          <h2 className="text-3xl font-bold sm:text-4xl">
+        <div className="mx-auto max-w-xl text-center">
+          <h2 className="text-3xl font-light sm:text-4xl">
             Este evento é pra{' '}
             <span className="bg-gradient-to-r from-sky-600 to-blue-900 bg-clip-text text-4xl font-extrabold text-transparent">
               você
@@ -34,10 +34,6 @@ export function Why() {
           >
             <TrendingUp size={40} strokeWidth="1.5" />
           </WhyCard>
-
-          {/* <WhyCard props={{ title: 'Investir No Futuro Da Sua Empresa' }}>
-            <Building2 size={40} strokeWidth="1.5" />
-          </WhyCard> */}
 
           <WhyCard
             props={{
@@ -61,10 +57,6 @@ export function Why() {
           <WhyCard props={{ title: 'Potencializar os Resultados' }}>
             <Rocket size={40} strokeWidth="1.5" />
           </WhyCard>
-
-          {/* <WhyCard props={{ title: 'Construir Uma Equipe De Alto Desempenho' }}>
-            <Users2 size={40} strokeWidth="1.5" />
-          </WhyCard> */}
         </div>
 
         <div className="mt-12 text-center">
