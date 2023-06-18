@@ -1,6 +1,6 @@
-import { isPast, format } from 'date-fns'
-import ptBR from 'date-fns/locale/pt-BR'
 import classNames from 'classnames'
+import { format, isPast } from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR'
 import Link from 'next/link'
 
 interface LessonProps {
@@ -37,12 +37,13 @@ export function Lesson({
     <div>
       {isLessonAvailable ? (
         <Link href={`/event/lesson/${slug}`} className="group">
-          <span className="text-gray-500">{availableDateFormatted}</span>
+          <span className="text-gray-200">{availableDateFormatted}</span>
           <div
             className={classNames(
-              'mt-2 flex flex-col gap-4 rounded border border-blue-900 p-4 transition-colors group-hover:border-blue-900/70',
+              'mt-2 flex flex-col gap-4 rounded border border-blue-900  p-4 transition-colors group-hover:border-blue-900/70',
               {
                 'bg-blue-900': isActiveLesson,
+                // 'bg-gray-700': !isActiveLesson,
               },
             )}
           >
@@ -65,7 +66,7 @@ export function Lesson({
                   'rounded border px-2 py-[0.125rem] text-xs font-bold',
                   {
                     'border-white text-white': isActiveLesson,
-                    'border-blue-900 text-black': !isActiveLesson,
+                    'border-blue-900 text-zinc-100': !isActiveLesson,
                   },
                 )}
               >
@@ -73,7 +74,7 @@ export function Lesson({
               </span>
             </header>
             <span
-              className={classNames('font-bold leading-relaxed', {
+              className={classNames('font-bold leading-relaxed text-zinc-100', {
                 'text-white': isActiveLesson,
               })}
             >
@@ -83,18 +84,20 @@ export function Lesson({
         </Link>
       ) : (
         <>
-          <span className="text-gray-500">{availableDateFormatted}</span>
-          <div className="mt-2 flex flex-col gap-4 rounded border border-zinc-600 bg-zinc-200 p-4 transition-colors hover:cursor-not-allowed group-hover:border-green-500">
+          <span className="text-gray-200">{availableDateFormatted}</span>
+          <div className="mt-2 flex flex-col gap-4 rounded border border-zinc-600 bg-gray-600 p-4 transition-colors hover:cursor-not-allowed group-hover:border-green-500">
             <header className="flex items-center justify-between">
-              <span className="flex items-center gap-2 text-sm font-medium text-zinc-600 group-hover:cursor-not-allowed">
+              <span className="flex items-center gap-2 text-sm font-medium text-zinc-200 group-hover:cursor-not-allowed">
                 {/* <Lock size={20}/> */}
                 Em breve
               </span>
-              <span className="rounded border border-zinc-600 px-2 py-[0.125rem] text-xs font-bold text-zinc-950">
+              <span className="rounded border border-zinc-600 px-2 py-[0.125rem] text-xs font-bold text-zinc-200">
                 {type === 'live' ? 'LIVE AO VIVO' : 'AULA PRÁTICA'}
               </span>
             </header>
-            <span className="font-bold leading-relaxed">{title}</span>
+            <span className="font-bold leading-relaxed text-zinc-200">
+              {title}
+            </span>
           </div>
         </>
       )}

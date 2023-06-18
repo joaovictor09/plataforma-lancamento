@@ -15,7 +15,7 @@ export function Why() {
         <div className="mx-auto max-w-xl text-center">
           <h2 className="text-3xl font-light sm:text-4xl">
             Este evento é pra{' '}
-            <span className="bg-gradient-to-r from-sky-600 to-blue-900 bg-clip-text text-4xl font-extrabold text-transparent">
+            <span className="bg-gradient-to-r from-sky-600 to-blue-900 bg-clip-text font-extrabold text-transparent">
               você
             </span>{' '}
             que quer
