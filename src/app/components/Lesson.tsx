@@ -53,7 +53,6 @@ export function Lesson({
                   'flex  items-center gap-2 text-sm font-medium',
                   {
                     'text-white': isActiveLesson,
-                    'text-blue-900': !isActiveLesson,
                   },
                 )}
               >
