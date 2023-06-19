@@ -50,10 +50,7 @@ export function Lesson({
             <header className="flex items-center justify-between">
               <span
                 className={classNames(
-                  'flex  items-center gap-2 text-sm font-medium',
-                  {
-                    'text-white': isActiveLesson,
-                  },
+                  'flex  items-center gap-2 text-sm font-medium text-white',
                 )}
               >
                 {/* <CheckCircle size={20}/> */}
