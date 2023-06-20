@@ -9,6 +9,7 @@ interface LessonCardProps {
   thumbImage?: string
   lessonNumber: number
   totalLessonQuantity: number
+  index: number
 }
 
 export function LessonCard({
@@ -18,15 +19,19 @@ export function LessonCard({
   thumbImage,
   lessonNumber,
   totalLessonQuantity,
+  index,
 }: LessonCardProps) {
   return (
-    <div className="group relative flex w-full flex-col gap-2 overflow-hidden rounded-xl transition-all">
+    <div
+      className={`group relative flex w-full flex-col gap-2 overflow-hidden rounded-xl transition-all`}
+    >
       <div className="relative">
         <Image
           src={
             thumbImage ||
             'https://clubeusmle.com/wp-content/uploads/capa01-media.jpeg'
           }
+          placeholder="empty"
           alt=""
           width={300}
           height={300}
