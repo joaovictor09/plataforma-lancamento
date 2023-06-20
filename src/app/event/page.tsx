@@ -18,8 +18,6 @@ interface lessonProps {
   }
 }
 
-export const dynamicParams = true
-
 async function fetchAllLessonsSlug() {
   const { data } = await client.query({
     query: gql`
