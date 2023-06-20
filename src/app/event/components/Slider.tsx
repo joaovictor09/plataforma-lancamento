@@ -23,7 +23,7 @@ export function Slider({ lessons }: SliderProps) {
     loop: true,
     mode: 'snap',
     rtl: false,
-    slides: { perView: 'auto', spacing: 50 },
+    slides: { perView: 'auto', spacing: 20 },
   })
 
   return (
