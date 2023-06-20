@@ -23,7 +23,7 @@ export function LessonCard({
 }: LessonCardProps) {
   return (
     <div
-      className={`group relative flex w-full flex-col gap-2 overflow-hidden rounded-xl transition-all`}
+      className={`group relative flex w-full max-w-lg flex-col gap-2 overflow-hidden rounded-xl transition-all`}
     >
       <div className="relative">
         <Image
