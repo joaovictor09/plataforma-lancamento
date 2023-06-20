@@ -86,10 +86,9 @@ export default function EventPage() {
           </div>
 
           <p className="max-w-xl text-lg">
-            Após muito tempo sofrendo com a realidade da medicina no Brasil, um
-            médico descobre a solução para os seus problemas: a residência nos
-            EUA! Agora sua missão é salvar a vida de outros médicos brasileiros
-            que, assim como ele, acreditam que merecem mais!
+            Aprenda de forma simples e descomplicada o segredo das grandes
+            agências para fechar mais de 80 contratos recorrentes de gestão de
+            tráfego por mês.
           </p>
 
           <Link
